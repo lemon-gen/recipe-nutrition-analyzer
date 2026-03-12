@@ -26,6 +26,14 @@ conda activate recipe-nutri
 ```
 pip install -r requirements.txt
 ```
+#3. 下载Qwen2.5-VL-3B-Instruct(推荐modelscope)
+```
+git clone https://www.modelscope.cn/qwen/Qwen2.5-VL-3B-Instruct.git
+```
+#3.1 hf的清华镜像源使用命令
+```
+export HF_ENDPOINT=https://hf-mirror.com
+```
 
 ## Quickstart
 Below, we provide simple examples to show how to use RNA in demo.
