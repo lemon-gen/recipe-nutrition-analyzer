@@ -16,7 +16,6 @@ Recipe Generator and Nutrition Analyzer
 - 推荐使用虚拟环境（conda）
 
 ### 安装步骤
-```bash、
 # 1. 创建并激活虚拟环境（可选但推荐）
 # conda方式
 ```
