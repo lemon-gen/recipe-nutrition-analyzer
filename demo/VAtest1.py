@@ -5,6 +5,8 @@ from qwen_vl_utils import process_vision_info
 
 LOCAL_MODEL_PATH = "Qwen2.5-VL-3B-Instruct" 
 IMAGE_PATH = "of1.jpg"                       
+OUTPUT_TXT = "recipe_result.txt"  # 输出文本文件名
+
 # 加载本地模型，自动适配GPU/CPU，兼容3B模型
 model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
     LOCAL_MODEL_PATH, 
@@ -29,7 +31,7 @@ messages = [
                 "type": "image",
                 "image": local_image, 
             },
-            {"type": "text", "text": "Identify the ingredients in the image, first tell me what ingredients are in it, and then use these ingredients as the main components to create a lunch recipe suggestion for me, which should meet healthy dietary standards. You can also appropriately suggest adding or removing ingredients."},  
+            {"type": "text", "text": "Identify the ingredients in the picture. First, tell me what these ingredients are. Then create a healthy lunch recipe using these ingredients and analyze the nutritional content. You can appropriately suggest adding or removing ingredients, only using commas and periods."},  
         ],
     }
 ]
@@ -68,5 +70,14 @@ output_text = processor.batch_decode(
     clean_up_tokenization_spaces=False
 )
 
+# 1. 控制台打印
 print("===== 图片识别结果 =====")
-print(output_text[0])  
+result = output_text[0]
+print(result)
+
+# 2. 保存到 TXT 文件（核心修改部分）
+with open(OUTPUT_TXT, "w", encoding="utf-8") as f:
+    f.write("===== 食材识别 + 健康午餐食谱建议 =====\n")
+    f.write(result)
+
+print(f"\n✅ 结果已保存到文件：{OUTPUT_TXT}")
