@@ -43,8 +43,14 @@ Below, we provide simple examples to show how to use RNA in demo.
 conda activate recipe-nutri
 ```
 then,enter demon and run VAtest01.py
+程序读入当前目录下的图片of1,识别内容并且根据识别情况生成食谱建议和营养分析。
 ```
 cd demo
 python3 VAtest01.py
+```
+run testvoice.py to test voice part.
+程序读入先前生成的recipe_result.txt，并生成音频文件。
+```
+python3 testvoice.py
 ```
 
